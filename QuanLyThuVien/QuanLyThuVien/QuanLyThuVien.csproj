@@ -93,6 +93,9 @@
     <EmbeddedResource Include="FormQLMuon.resx">
       <DependentUpon>FormQLMuon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormQLTacGia.resx">
+      <DependentUpon>FormQLTacGia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormQLThuVien.resx">
       <DependentUpon>FormQLThuVien.cs</DependentUpon>
     </EmbeddedResource>
