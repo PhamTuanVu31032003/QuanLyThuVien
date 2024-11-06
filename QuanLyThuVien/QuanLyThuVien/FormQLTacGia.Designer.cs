@@ -131,6 +131,7 @@
             this.txt_matacgia.Name = "txt_matacgia";
             this.txt_matacgia.Size = new System.Drawing.Size(148, 22);
             this.txt_matacgia.TabIndex = 24;
+            this.txt_matacgia.TextChanged += new System.EventHandler(this.txt_matacgia_TextChanged);
             // 
             // label5
             // 
