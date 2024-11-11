@@ -24,14 +24,15 @@ namespace QuanLyThuVien
         {
             string Masach = tb_masach.Text;
             string Tensach = tb_tensach.Text;
-            string Matg = tb_matg.Text;
+            string Matg = gr.Text;
             string Tentg = tb_tentg.Text;
             string Nhaxb = tb_nhaxb.Text;
             int Namxb = int.Parse(tb_namxb.Text);
             string theloai = tb_theloai.Text;
             int Soluong = int.Parse(tb_soluong.Text);
             int soluongconlai = int.Parse(tb_soluongcl.Text);
-            sach.Createbook(Masach, Tensach, Matg, Tentg, Nhaxb, Namxb, theloai, Soluong, soluongconlai);
+            int gia = int.Parse(tb_gia.Text);
+            sach.Createbook(Masach, Tensach, Matg, Tentg, Nhaxb, Namxb, theloai, Soluong, soluongconlai, gia);
             FormQLSach_Load(sender, e);
         }
 
@@ -44,14 +45,15 @@ namespace QuanLyThuVien
         {
             string Masach = tb_masach.Text;
             string Tensach = tb_tensach.Text;
-            string Matg = tb_matg.Text;
+            string Matg = gr.Text;
             string Tentg = tb_tentg.Text;
             string Nhaxb = tb_nhaxb.Text;
             int Namxb = int.Parse(tb_namxb.Text);
             string theloai = tb_theloai.Text;
             int Soluong = int.Parse(tb_soluong.Text);
             int soluongconlai = int.Parse(tb_soluongcl.Text);
-            sach.Deletebook(Masach, Tensach, Matg, Tentg, Nhaxb, Namxb, theloai, Soluong, soluongconlai);
+            int gia = int.Parse(tb_gia.Text);
+            sach.Deletebook(Masach, Tensach, Matg, Tentg, Nhaxb, Namxb, theloai, Soluong, soluongconlai,gia);
             FormQLSach_Load(sender, e);
         }
 
@@ -59,14 +61,15 @@ namespace QuanLyThuVien
         {
             string Masach = tb_masach.Text;
             string Tensach = tb_tensach.Text;
-            string Matg = tb_matg.Text;
+            string Matg = gr.Text;
             string Tentg = tb_tentg.Text;
             string Nhaxb = tb_nhaxb.Text;
             int Namxb = int.Parse(tb_namxb.Text);
             string theloai = tb_theloai.Text;
             int Soluong = int.Parse(tb_soluong.Text);
             int soluongconlai = int.Parse(tb_soluongcl.Text);
-            sach.Updatebook(Masach, Tensach, Matg, Tentg, Nhaxb, Namxb, theloai, Soluong, soluongconlai);
+            int gia = int.Parse(tb_gia.Text);
+            sach.Updatebook(Masach, Tensach, Matg, Tentg, Nhaxb, Namxb, theloai, Soluong, soluongconlai,gia);
             FormQLSach_Load(sender, e);
         }
 
@@ -81,6 +84,25 @@ namespace QuanLyThuVien
             FormQLThuVien formQLThuVien = new FormQLThuVien();
             formQLThuVien.Show();
             this.Close();
+        }
+
+        private void dgv_sach_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgv_sach.Rows[e.RowIndex];
+                // lay du lieu cot va day vao tb
+                tb_masach.Text = row.Cells["MaSach"].Value.ToString();
+                tb_tensach.Text = row.Cells["TenSach"].Value.ToString();
+                tb_matg.Text = row.Cells["MaTacGia"].Value.ToString();
+                tb_tentg.Text = row.Cells["TenTacGia"].Value.ToString();
+                tb_nhaxb.Text = row.Cells["NhaXuatBan"].Value.ToString();
+                tb_namxb.Text = row.Cells["NamXuatBan"].Value.ToString();
+                tb_theloai.Text = row.Cells["TheLoai"].Value.ToString();
+                tb_soluong.Text = row.Cells["SoLuong"].Value.ToString();
+                tb_soluongcl.Text = row.Cells["SoLuongConLai"].Value.ToString();
+                tb_gia.Text = row.Cells["Gia"].Value.ToString();
+            }
         }
     }
 }

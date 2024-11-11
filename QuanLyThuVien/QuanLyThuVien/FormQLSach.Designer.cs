@@ -39,10 +39,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btn_xoa = new System.Windows.Forms.Button();
             this.btn_them = new System.Windows.Forms.Button();
-            this.tb_matg = new System.Windows.Forms.GroupBox();
+            this.gr = new System.Windows.Forms.GroupBox();
+            this.tb_theloai = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tb_soluongcl = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_matg = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tb_soluong = new System.Windows.Forms.TextBox();
             this.tb_nhaxb = new System.Windows.Forms.TextBox();
@@ -52,10 +54,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tb_theloai = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.tb_gia = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_sach)).BeginInit();
-            this.tb_matg.SuspendLayout();
+            this.gr.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgv_sach
@@ -70,6 +72,7 @@
             this.dgv_sach.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_sach.Size = new System.Drawing.Size(1155, 213);
             this.dgv_sach.TabIndex = 23;
+            this.dgv_sach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_sach_CellClick);
             // 
             // btn_timkiem
             // 
@@ -193,35 +196,58 @@
             this.btn_them.UseVisualStyleBackColor = true;
             this.btn_them.Click += new System.EventHandler(this.btn_them_Click);
             // 
-            // tb_matg
+            // gr
             // 
-            this.tb_matg.Controls.Add(this.tb_theloai);
-            this.tb_matg.Controls.Add(this.label10);
-            this.tb_matg.Controls.Add(this.label9);
-            this.tb_matg.Controls.Add(this.tb_soluongcl);
-            this.tb_matg.Controls.Add(this.textBox1);
-            this.tb_matg.Controls.Add(this.label8);
-            this.tb_matg.Controls.Add(this.tb_namxb);
-            this.tb_matg.Controls.Add(this.label7);
-            this.tb_matg.Controls.Add(this.tb_soluong);
-            this.tb_matg.Controls.Add(this.tb_nhaxb);
-            this.tb_matg.Controls.Add(this.tb_tentg);
-            this.tb_matg.Controls.Add(this.tb_tensach);
-            this.tb_matg.Controls.Add(this.tb_masach);
-            this.tb_matg.Controls.Add(this.label6);
-            this.tb_matg.Controls.Add(this.label5);
-            this.tb_matg.Controls.Add(this.label4);
-            this.tb_matg.Controls.Add(this.label3);
-            this.tb_matg.Controls.Add(this.label2);
-            this.tb_matg.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_matg.Location = new System.Drawing.Point(15, 69);
-            this.tb_matg.Margin = new System.Windows.Forms.Padding(6);
-            this.tb_matg.Name = "tb_matg";
-            this.tb_matg.Padding = new System.Windows.Forms.Padding(6);
-            this.tb_matg.Size = new System.Drawing.Size(1148, 341);
-            this.tb_matg.TabIndex = 17;
-            this.tb_matg.TabStop = false;
-            this.tb_matg.Text = "Thông tin chi tiết độc giả";
+            this.gr.Controls.Add(this.tb_gia);
+            this.gr.Controls.Add(this.label11);
+            this.gr.Controls.Add(this.tb_theloai);
+            this.gr.Controls.Add(this.label10);
+            this.gr.Controls.Add(this.label9);
+            this.gr.Controls.Add(this.tb_soluongcl);
+            this.gr.Controls.Add(this.tb_matg);
+            this.gr.Controls.Add(this.label8);
+            this.gr.Controls.Add(this.tb_namxb);
+            this.gr.Controls.Add(this.label7);
+            this.gr.Controls.Add(this.tb_soluong);
+            this.gr.Controls.Add(this.tb_nhaxb);
+            this.gr.Controls.Add(this.tb_tentg);
+            this.gr.Controls.Add(this.tb_tensach);
+            this.gr.Controls.Add(this.tb_masach);
+            this.gr.Controls.Add(this.label6);
+            this.gr.Controls.Add(this.label5);
+            this.gr.Controls.Add(this.label4);
+            this.gr.Controls.Add(this.label3);
+            this.gr.Controls.Add(this.label2);
+            this.gr.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gr.Location = new System.Drawing.Point(15, 69);
+            this.gr.Margin = new System.Windows.Forms.Padding(6);
+            this.gr.Name = "gr";
+            this.gr.Padding = new System.Windows.Forms.Padding(6);
+            this.gr.Size = new System.Drawing.Size(1148, 341);
+            this.gr.TabIndex = 17;
+            this.gr.TabStop = false;
+            this.gr.Text = "Thông tin chi tiết độc giả";
+            // 
+            // tb_theloai
+            // 
+            this.tb_theloai.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_theloai.Location = new System.Drawing.Point(140, 290);
+            this.tb_theloai.Margin = new System.Windows.Forms.Padding(6);
+            this.tb_theloai.Name = "tb_theloai";
+            this.tb_theloai.Size = new System.Drawing.Size(298, 30);
+            this.tb_theloai.TabIndex = 16;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label10.Location = new System.Drawing.Point(29, 300);
+            this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(76, 22);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Thể loại";
             // 
             // label9
             // 
@@ -244,14 +270,14 @@
             this.tb_soluongcl.Size = new System.Drawing.Size(298, 30);
             this.tb_soluongcl.TabIndex = 13;
             // 
-            // textBox1
+            // tb_matg
             // 
-            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(140, 163);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(298, 30);
-            this.textBox1.TabIndex = 12;
+            this.tb_matg.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_matg.Location = new System.Drawing.Point(140, 163);
+            this.tb_matg.Margin = new System.Windows.Forms.Padding(6);
+            this.tb_matg.Name = "tb_matg";
+            this.tb_matg.Size = new System.Drawing.Size(298, 30);
+            this.tb_matg.TabIndex = 12;
             // 
             // label8
             // 
@@ -345,26 +371,26 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "QUẢN LÝ SÁCH";
             // 
-            // tb_theloai
+            // tb_gia
             // 
-            this.tb_theloai.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_theloai.Location = new System.Drawing.Point(140, 290);
-            this.tb_theloai.Margin = new System.Windows.Forms.Padding(6);
-            this.tb_theloai.Name = "tb_theloai";
-            this.tb_theloai.Size = new System.Drawing.Size(298, 30);
-            this.tb_theloai.TabIndex = 16;
+            this.tb_gia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_gia.Location = new System.Drawing.Point(791, 290);
+            this.tb_gia.Margin = new System.Windows.Forms.Padding(6);
+            this.tb_gia.Name = "tb_gia";
+            this.tb_gia.Size = new System.Drawing.Size(298, 30);
+            this.tb_gia.TabIndex = 18;
             // 
-            // label10
+            // label11
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label10.Location = new System.Drawing.Point(29, 300);
-            this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(76, 22);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "Thể loại";
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label11.Location = new System.Drawing.Point(620, 298);
+            this.label11.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(73, 22);
+            this.label11.TabIndex = 17;
+            this.label11.Text = "Giá tiền";
             // 
             // FormQLSach
             // 
@@ -377,7 +403,7 @@
             this.Controls.Add(this.btn_thoat);
             this.Controls.Add(this.btn_xoa);
             this.Controls.Add(this.btn_them);
-            this.Controls.Add(this.tb_matg);
+            this.Controls.Add(this.gr);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -385,8 +411,8 @@
             this.Text = "FormQLSach";
             this.Load += new System.EventHandler(this.FormQLSach_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_sach)).EndInit();
-            this.tb_matg.ResumeLayout(false);
-            this.tb_matg.PerformLayout();
+            this.gr.ResumeLayout(false);
+            this.gr.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -405,7 +431,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btn_xoa;
         private System.Windows.Forms.Button btn_them;
-        private System.Windows.Forms.GroupBox tb_matg;
+        private System.Windows.Forms.GroupBox gr;
         private System.Windows.Forms.TextBox tb_soluong;
         private System.Windows.Forms.TextBox tb_nhaxb;
         private System.Windows.Forms.TextBox tb_tentg;
@@ -416,9 +442,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tb_soluongcl;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_matg;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tb_theloai;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tb_gia;
+        private System.Windows.Forms.Label label11;
     }
 }

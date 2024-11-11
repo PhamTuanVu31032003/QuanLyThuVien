@@ -22,9 +22,10 @@ namespace QuanLyThuVien
             return kn.Readdata(sql);
         }
         // them sach
-        public void Createbook(string Masach, string Tensach,string Matg, string Tentg, string Nhaxb, int Namxb,string theloai, int Soluong,int soluongconlai)
+        public void Createbook(string Masach, string Tensach,string Matg, string Tentg, string Nhaxb, int Namxb,string theloai, int Soluong,int soluongconlai,int gia)
         {
-            string sql = "INSERT INTO Sach (MaSach,TenSach,MaTacGia,TenTacGia,NhaXuatBan,NamXuatBan,TheLoai,SoLuong,SoLuongConLai) VALUES (@MaSach, @TenSach,@MaTacGia,@TenTacGia,@NhaXuatBan,@NamXuatBan,@TheLoai,@SoLuong,@SoLuongConLai)"; // truyen vao cac tham so 
+            string sql = "INSERT INTO Sach (MaSach,TenSach,MaTacGia,TenTacGia,NhaXuatBan,NamXuatBan,TheLoai,SoLuong,SoLuongConLai,Gia) " +
+                "VALUES (@MaSach, @TenSach,@MaTacGia,@TenTacGia,@NhaXuatBan,@NamXuatBan,@TheLoai,@SoLuong,@SoLuongConLai,@Gia)"; // truyen vao cac tham so 
             SqlParameter[] sp = new SqlParameter[]
             {
                 new SqlParameter("@MaSach", Masach),
@@ -35,11 +36,12 @@ namespace QuanLyThuVien
                 new SqlParameter("@NamXuatBan", Namxb),
                 new SqlParameter("@TheLoai", theloai),
                 new SqlParameter("@SoLuong", Soluong),
-                new SqlParameter("@SoLuongConLai", soluongconlai)
+                new SqlParameter("@SoLuongConLai", soluongconlai),
+                new SqlParameter("@Gia",gia)
             };
             kn.CUD(sql, sp);
         }
-        public void Updatebook(string Masach, string Tensach, string Matg, string Tentg, string Nhaxb, int Namxb, string theloai, int Soluong, int soluongconlai)
+        public void Updatebook(string Masach, string Tensach, string Matg, string Tentg, string Nhaxb, int Namxb, string theloai, int Soluong, int soluongconlai, int gia)
         {
             string sql = "UPDATE Sach SET TenSach = @TenSach, MaTacGia = @MaTacGia, TenTacGia = @TenTacGia, NhaXuatBan = @NhaXuatBan, NamXuatBan=@NamXuatBan,Theloai = @TheLoai,SoLuong=@SoLuong, SoLuongConLai = @SoLuongConLai WHERE MaSach = @MaSach"; // truyen vao cac tham so 
             SqlParameter[] sp = new SqlParameter[]
@@ -52,11 +54,12 @@ namespace QuanLyThuVien
                 new SqlParameter("@NamXuatBan", Namxb),
                 new SqlParameter("@TheLoai", theloai),
                 new SqlParameter("@SoLuong", Soluong),
-                new SqlParameter("@SoLuongConLai", soluongconlai)
+                new SqlParameter("@SoLuongConLai", soluongconlai),
+                new SqlParameter("@Gia",gia)
             };
             kn.CUD(sql, sp);
         }
-        public void Deletebook(string Masach, string Tensach, string Matg, string Tentg, string Nhaxb, int Namxb, string theloai, int Soluong, int soluongconlai)
+        public void Deletebook(string Masach, string Tensach, string Matg, string Tentg, string Nhaxb, int Namxb, string theloai, int Soluong, int soluongconlai, int gia)
         {
             string sql = "DELETE FROM Sach WHERE MaSach = @MaSach"; // truyen vao cac tham so 
             SqlParameter[] sp = new SqlParameter[]
