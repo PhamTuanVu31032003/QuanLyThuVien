@@ -19,7 +19,7 @@ namespace QuanLyThuVien
 
         private void txt_matacgia_TextChanged(object sender, EventArgs e)
         {
-            txt_matacgia.Text = "vu an cuwt";
+            txt_matacgia.Text = "vu an cut";
         }
     }
 }
