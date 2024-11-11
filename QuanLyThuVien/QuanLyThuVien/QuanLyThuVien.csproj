@@ -89,6 +89,7 @@
       <DependentUpon>FormQLTra.cs</DependentUpon>
     </Compile>
     <Compile Include="Ketnoi.cs" />
+    <Compile Include="MuonTraSach.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormQLDocGia.resx">
