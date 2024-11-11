@@ -91,11 +91,15 @@
     <Compile Include="Ketnoi.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sach.cs" />
     <EmbeddedResource Include="FormQLDocGia.resx">
       <DependentUpon>FormQLDocGia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormQLMuon.resx">
       <DependentUpon>FormQLMuon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormQLSach.resx">
+      <DependentUpon>FormQLSach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormQLTacGia.resx">
       <DependentUpon>FormQLTacGia.cs</DependentUpon>

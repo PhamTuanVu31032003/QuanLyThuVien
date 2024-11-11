@@ -12,7 +12,7 @@ namespace QuanLyThuVien
     internal class Ketnoi
     {
         SqlConnection conn;
-        string kn = @"";
+        string kn = @"Server=LAPTOP-TKDRUJMP;Database=QuanLyThuVien;Integrated Security=True";
         public void ketnoi()
         {
             conn = new SqlConnection(kn);
