@@ -51,7 +51,6 @@
             this.button5 = new System.Windows.Forms.Button();
             this.dtp_ngaysinh = new System.Windows.Forms.DateTimePicker();
             this.dgv_madocgia = new System.Windows.Forms.DataGridView();
-            this.dtp_ngaylamthe = new System.Windows.Forms.DateTimePicker();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +59,7 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtp_ngaylamthe = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_madocgia)).BeginInit();
             this.SuspendLayout();
             // 
@@ -249,7 +249,7 @@
             this.dtp_ngaysinh.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_ngaysinh.Location = new System.Drawing.Point(173, 191);
             this.dtp_ngaysinh.Name = "dtp_ngaysinh";
-            this.dtp_ngaysinh.Size = new System.Drawing.Size(114, 22);
+            this.dtp_ngaysinh.Size = new System.Drawing.Size(100, 22);
             this.dtp_ngaysinh.TabIndex = 21;
             // 
             // dgv_madocgia
@@ -271,14 +271,6 @@
             this.dgv_madocgia.Size = new System.Drawing.Size(1050, 167);
             this.dgv_madocgia.TabIndex = 22;
             this.dgv_madocgia.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_madocgia_CellClick);
-            // 
-            // dtp_ngaylamthe
-            // 
-            this.dtp_ngaylamthe.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_ngaylamthe.Location = new System.Drawing.Point(567, 196);
-            this.dtp_ngaylamthe.Name = "dtp_ngaylamthe";
-            this.dtp_ngaylamthe.Size = new System.Drawing.Size(119, 22);
-            this.dtp_ngaylamthe.TabIndex = 23;
             // 
             // Column1
             // 
@@ -343,6 +335,14 @@
             this.Column8.MinimumWidth = 6;
             this.Column8.Name = "Column8";
             this.Column8.Width = 125;
+            // 
+            // dtp_ngaylamthe
+            // 
+            this.dtp_ngaylamthe.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_ngaylamthe.Location = new System.Drawing.Point(567, 196);
+            this.dtp_ngaylamthe.Name = "dtp_ngaylamthe";
+            this.dtp_ngaylamthe.Size = new System.Drawing.Size(119, 22);
+            this.dtp_ngaylamthe.TabIndex = 23;
             // 
             // FormQLDocGia
             // 
