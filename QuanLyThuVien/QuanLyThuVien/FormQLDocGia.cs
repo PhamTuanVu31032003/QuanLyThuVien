@@ -14,27 +14,14 @@ namespace QuanLyThuVien
     public partial class FormQLDocGia : Form
     {
        
-        String connectionString = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Application.StartupPath}\qltv.mdf;Integrated Security=True;Connect Timeout=30";
+       
         public FormQLDocGia()
         {
             InitializeComponent();
            
           
         }
-        private void LoadData()
-        {
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                string query = "SELECT * FROM tbDocgia";
-                using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
-                {
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-                    dgv_madocgia.DataSource = dt;
-                }
-            }
-        
-        }
+       
 
         private void label5_Click(object sender, EventArgs e)
         {
@@ -68,7 +55,7 @@ namespace QuanLyThuVien
 
         private void FormQLDocGia_Load(object sender, EventArgs e)
         {
-            LoadData();
+           
         }
 
         private void dgv_madocgia_CellClick(object sender, DataGridViewCellEventArgs e)

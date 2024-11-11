@@ -88,6 +88,7 @@
     <Compile Include="FormQLTra.Designer.cs">
       <DependentUpon>FormQLTra.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ketnoi.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormQLDocGia.resx">
