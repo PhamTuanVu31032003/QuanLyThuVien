@@ -205,6 +205,7 @@
             this.btnthem.TabIndex = 16;
             this.btnthem.Text = "Thêm";
             this.btnthem.UseVisualStyleBackColor = true;
+            this.btnthem.Click += new System.EventHandler(this.btnthem_Click);
             // 
             // btnsua
             // 
@@ -245,9 +246,10 @@
             // 
             // dtp_ngaysinh
             // 
-            this.dtp_ngaysinh.Location = new System.Drawing.Point(159, 196);
+            this.dtp_ngaysinh.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_ngaysinh.Location = new System.Drawing.Point(173, 191);
             this.dtp_ngaysinh.Name = "dtp_ngaysinh";
-            this.dtp_ngaysinh.Size = new System.Drawing.Size(200, 22);
+            this.dtp_ngaysinh.Size = new System.Drawing.Size(114, 22);
             this.dtp_ngaysinh.TabIndex = 21;
             // 
             // dgv_madocgia
@@ -268,16 +270,19 @@
             this.dgv_madocgia.RowTemplate.Height = 24;
             this.dgv_madocgia.Size = new System.Drawing.Size(1050, 167);
             this.dgv_madocgia.TabIndex = 22;
+            this.dgv_madocgia.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_madocgia_CellClick);
             // 
             // dtp_ngaylamthe
             // 
+            this.dtp_ngaylamthe.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_ngaylamthe.Location = new System.Drawing.Point(567, 196);
             this.dtp_ngaylamthe.Name = "dtp_ngaylamthe";
-            this.dtp_ngaylamthe.Size = new System.Drawing.Size(200, 22);
+            this.dtp_ngaylamthe.Size = new System.Drawing.Size(119, 22);
             this.dtp_ngaylamthe.TabIndex = 23;
             // 
             // Column1
             // 
+            this.Column1.DataPropertyName = "Madocgia";
             this.Column1.HeaderText = "Mã Độc Giả";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
@@ -285,6 +290,7 @@
             // 
             // Column2
             // 
+            this.Column2.DataPropertyName = "Hovaten";
             this.Column2.HeaderText = "Họ và Tên";
             this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
@@ -292,6 +298,7 @@
             // 
             // Column3
             // 
+            this.Column3.DataPropertyName = "Ngaysinh";
             this.Column3.HeaderText = "Ngày Sinh";
             this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
@@ -299,6 +306,7 @@
             // 
             // Column4
             // 
+            this.Column4.DataPropertyName = "Gioitinh";
             this.Column4.HeaderText = "Giới Tính";
             this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
@@ -306,6 +314,7 @@
             // 
             // Column5
             // 
+            this.Column5.DataPropertyName = "Diachi";
             this.Column5.HeaderText = "Địa Chỉ";
             this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
@@ -313,6 +322,7 @@
             // 
             // Column6
             // 
+            this.Column6.DataPropertyName = "Dienthoai";
             this.Column6.HeaderText = "Điện Thoại";
             this.Column6.MinimumWidth = 6;
             this.Column6.Name = "Column6";
@@ -320,6 +330,7 @@
             // 
             // Column7
             // 
+            this.Column7.DataPropertyName = "CMND";
             this.Column7.HeaderText = "CMND";
             this.Column7.MinimumWidth = 6;
             this.Column7.Name = "Column7";
@@ -327,6 +338,7 @@
             // 
             // Column8
             // 
+            this.Column8.DataPropertyName = "Ngaylamthe";
             this.Column8.HeaderText = "Ngày Làm Thẻ";
             this.Column8.MinimumWidth = 6;
             this.Column8.Name = "Column8";
@@ -363,6 +375,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormQLDocGia";
             this.Text = "FormQLDocGia";
+            this.Load += new System.EventHandler(this.FormQLDocGia_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_madocgia)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -90,6 +90,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormQLDocGia.resx">
+      <DependentUpon>FormQLDocGia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormQLMuon.resx">
       <DependentUpon>FormQLMuon.cs</DependentUpon>
     </EmbeddedResource>
