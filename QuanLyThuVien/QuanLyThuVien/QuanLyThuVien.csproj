@@ -91,6 +91,7 @@
     <Compile Include="Ketnoi.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TacGia.cs" />
     <EmbeddedResource Include="FormQLDocGia.resx">
       <DependentUpon>FormQLDocGia.cs</DependentUpon>
     </EmbeddedResource>
