@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace QuanLyThuVien
 {
-    internal class TacGia
+    internal class Tg
     {
         Ketnoi kn;
-        public TacGia()
+        public Tg()
         {
             kn = new Ketnoi();
         }
@@ -64,7 +64,14 @@ namespace QuanLyThuVien
             };
             return kn.Readdata(sql, sp);
         }
-       
+        public DataTable SearchtenTacGia(string TenTacGia)
+        {
+            string sql = "SELECT * FROM TacGia Where TenTacGia = @tenTacGia";
+            SqlParameter[] sp = new SqlParameter[]
+            {
+                new SqlParameter("@tenTacGia", TenTacGia)
+            };
+            return kn.Readdata(sql, sp);
+        }
     }
 }
-
