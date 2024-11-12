@@ -30,9 +30,8 @@ namespace QuanLyThuVien
         // them sach
         public void Createbook(string Masach, string Tensach, string Matg, string Nhaxb, int Namxb, string theloai, int Soluong, int soluongconlai, string gia)
         {
-            string sql = "INSERT INTO Sach (MaSach, TenSach, NhaXuatBan, NamXuatBan, TheLoai, SoLuong, SoLuongConLai, Gia, MaTacGia) " +
-            "VALUES (@MaSach, @TenSach, @NhaXuatBan, @NamXuatBan, @TheLoai, @SoLuong, @SoLuongConLai, @Gia, @MaTacGia" +
-            "(SELECT MaTacGia FROM TacGia WHERE MaTacGia = @MaTacGia));";// truyen vao cac tham so 
+            string sql = "INSERT INTO Sach (MaSach, TenSach,MaTacGia, NhaXuatBan, NamXuatBan, TheLoai, SoLuong, SoLuongConLai, Gia ) " +
+            "VALUES (@MaSach, @TenSach,@MaTacGia, @NhaXuatBan, @NamXuatBan, @TheLoai, @SoLuong, @SoLuongConLai, @Gia)";
             SqlParameter[] sp = new SqlParameter[]
             {
                 new SqlParameter("@MaSach", Masach),
@@ -65,12 +64,12 @@ namespace QuanLyThuVien
             };
             kn.CUD(sql, sp);
         }
-        public void Deletebook(string Masach, string Tensach, string Matg, string Nhaxb, int Namxb, string theloai, int Soluong, int soluongconlai, string gia)
+        public void Deletebook(string Masach)
         {
-            string sql = "DELETE FROM Sach WHERE MaSach = @MaSach; "; // truyen vao cac tham so
+            string sql = "DELETE FROM Sach WHERE MaSach = @MaSach;"; // Xóa sách dựa vào mã sách
             SqlParameter[] sp = new SqlParameter[]
             {
-                new SqlParameter("@MaSach", Masach)
+        new SqlParameter("@MaSach", Masach)
             };
             kn.CUD(sql, sp);
         }

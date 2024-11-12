@@ -25,14 +25,17 @@ namespace QuanLyThuVien
         {
             string Masach = tb_masach.Text;
             string Tensach = tb_tensach.Text;
-            string Matg = cb_matg.Items.ToString();
+            string Matg = cb_matg.SelectedValue.ToString(); // Lấy mã tác giả đúng
             string Nhaxb = tb_nhaxb.Text;
             int Namxb = int.Parse(tb_namxb.Text);
             string theloai = tb_theloai.Text;
             int Soluong = int.Parse(tb_soluong.Text);
             int soluongconlai = int.Parse(tb_soluongcl.Text);
             string gia = tb_gia.Text;
+
             sach.Createbook(Masach, Tensach, Matg, Nhaxb, Namxb, theloai, Soluong, soluongconlai, gia);
+            dgv_sach.DataSource = null;
+            dgv_sach.Rows.Clear();
             FormQLSach_Load(sender, e);
         }
 
@@ -44,15 +47,10 @@ namespace QuanLyThuVien
         private void btn_xoa_Click(object sender, EventArgs e)
         {
             string Masach = tb_masach.Text;
-            string Tensach = tb_tensach.Text;
-            string Matg = cb_matg.Items.ToString();
-            string Nhaxb = tb_nhaxb.Text;
-            int Namxb = int.Parse(tb_namxb.Text);
-            string theloai = tb_theloai.Text;
-            int Soluong = int.Parse(tb_soluong.Text);
-            int soluongconlai = int.Parse(tb_soluongcl.Text);
-            string gia = tb_gia.Text;
-            sach.Deletebook(Masach, Tensach, Matg, Nhaxb, Namxb, theloai, Soluong, soluongconlai, gia);
+
+            sach.Deletebook(Masach);
+            dgv_sach.DataSource = null;
+            dgv_sach.Rows.Clear();
             FormQLSach_Load(sender, e);
         }
 
