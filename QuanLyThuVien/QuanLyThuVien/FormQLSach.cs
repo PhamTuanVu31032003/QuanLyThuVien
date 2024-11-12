@@ -18,6 +18,7 @@ namespace QuanLyThuVien
         public FormQLSach()
         {
             InitializeComponent();
+            LoadMaTacGiaComboBox();
         }
 
         private void btn_them_Click(object sender, EventArgs e)
@@ -99,6 +100,17 @@ namespace QuanLyThuVien
                 tb_soluongcl.Text = row.Cells["SoLuongConLai"].Value.ToString();
                 tb_gia.Text = row.Cells["Gia"].Value.ToString();
             }
+        }
+        private void LoadMaTacGiaComboBox()
+        {
+            // Lấy danh sách mã nhà cung cấp
+            DataTable ma = sach.Getallbook();
+
+            cb_matg.DataSource = ma;
+            cb_matg.DisplayMember = "MaTacGia"; // Cột hiển thị
+            cb_matg.ValueMember = "MaTacGia"; // Giá trị mã nhà cung cấp
+
+            cb_matg.SelectedIndex = -1; // Không chọn mục nào ban đầu
         }
     }
 }
