@@ -104,7 +104,7 @@ namespace QuanLyThuVien
         private void LoadMaTacGiaComboBox()
         {
             // Lấy danh sách mã nhà cung cấp
-            DataTable ma = sach.Getallbook();
+            DataTable ma = sach.Getallmatg();
 
             cb_matg.DataSource = ma;
             cb_matg.DisplayMember = "MaTacGia"; // Cột hiển thị

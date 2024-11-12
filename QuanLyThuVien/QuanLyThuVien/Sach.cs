@@ -22,12 +22,17 @@ namespace QuanLyThuVien
                 "FROM Sach INNER JOIN TacGia ON Sach.MaTacGia = TacGia.MaTacGia";
             return kn.Readdata(sql);
         }
+        public DataTable Getallmatg()
+        {
+            string sql = "SELECT MaTacGia FROM TacGia";
+            return kn.Readdata(sql);
+        }
         // them sach
         public void Createbook(string Masach, string Tensach, string Matg, string Nhaxb, int Namxb, string theloai, int Soluong, int soluongconlai, string gia)
         {
             string sql = "INSERT INTO Sach (MaSach, TenSach, NhaXuatBan, NamXuatBan, TheLoai, SoLuong, SoLuongConLai, Gia, MaTacGia) " +
-            "VALUES (@MaSach, @TenSach, @NhaXuatBan, @NamXuatBan, @TheLoai, @SoLuong, @SoLuongConLai, @Gia, @MaTacGia);";
-            // truyen vao cac tham so 
+            "VALUES (@MaSach, @TenSach, @NhaXuatBan, @NamXuatBan, @TheLoai, @SoLuong, @SoLuongConLai, @Gia, @MaTacGia" +
+            "(SELECT MaTacGia FROM TacGia WHERE MaTacGia = @MaTacGia));";// truyen vao cac tham so 
             SqlParameter[] sp = new SqlParameter[]
             {
                 new SqlParameter("@MaSach", Masach),
@@ -87,5 +92,6 @@ namespace QuanLyThuVien
             };
             return kn.Readdata(sql, sp);
         }
+
     }
 }
