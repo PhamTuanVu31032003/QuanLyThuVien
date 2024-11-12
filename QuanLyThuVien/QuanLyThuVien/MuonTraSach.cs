@@ -30,11 +30,11 @@ namespace QuanLyThuVien
                 "VALUES (@MaSach, @TenSach,@MaTacGia,@TenTacGia,@NhaXuatBan,@NamXuatBan,@TheLoai,@SoLuong,@SoLuongConLai,@Gia)"; // truyen vao cac tham so 
             SqlParameter[] sp = new SqlParameter[]
             {
-                new SqlParameter("@MaSach", Masach),
-                new SqlParameter("@TenSach", Tensach),
-                new SqlParameter("@MaTacGia", Matg),
-                new SqlParameter("@TenTacGia", Tentg),
-                new SqlParameter("@NhaXuatBan", Nhaxb),
+               // new SqlParameter("@MaSach", Masach),
+               // new SqlParameter("@TenSach", Tensach),
+              //  new SqlParameter("@MaTacGia", Matg),
+              //  new SqlParameter("@TenTacGia", Tentg),
+              //  new SqlParameter("@NhaXuatBan", Nhaxb),
                 new SqlParameter("@NamXuatBan", Namxb),
                 new SqlParameter("@TheLoai", theloai),
                 new SqlParameter("@SoLuong", Soluong),

@@ -20,24 +20,28 @@ namespace QuanLyThuVien
         private void quảnLýSáchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormQLSach formQlSach = new FormQLSach();
+            formQlSach.MdiParent = this;
             formQlSach.Show();
         }
 
         private void quảnLýĐộcGiảToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormQLDocGia formDocGia = new FormQLDocGia();
+            formDocGia.MdiParent=this;
             formDocGia.Show();
         }
 
         private void quảnLýTácGiảToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormQLTacGia formQLTacGia = new FormQLTacGia();
+            formQLTacGia.MdiParent=this;
             formQLTacGia.Show();
         }
 
         private void hệThốngToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormHeThong formHeThong = new FormHeThong();
+            formHeThong.MdiParent = this;
             formHeThong.Show();
         }
 
@@ -51,12 +55,14 @@ namespace QuanLyThuVien
         private void quảnLýMượnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormQLMuon formQLMuon = new FormQLMuon();
+            formQLMuon.MdiParent=this;
             formQLMuon.Show();
         }
 
         private void quảnLýTrảToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormQLTra formQLTra = new FormQLTra();
+            formQLTra.MdiParent=this;
             formQLTra.Show();
         }
     }

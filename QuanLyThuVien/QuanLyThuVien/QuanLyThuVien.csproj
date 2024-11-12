@@ -46,6 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Docgia.cs" />
+    <Compile Include="FormQLDocGia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormQLDocGia.Designer.cs">
+      <DependentUpon>FormQLDocGia.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormQLMuon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,12 +70,6 @@
     </Compile>
     <Compile Include="FormHeThong.Designer.cs">
       <DependentUpon>FormHeThong.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormQLDocGia.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormQLDocGia.Designer.cs">
-      <DependentUpon>FormQLDocGia.cs</DependentUpon>
     </Compile>
     <Compile Include="FormQLSach.cs">
       <SubType>Form</SubType>
