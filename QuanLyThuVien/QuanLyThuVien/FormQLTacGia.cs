@@ -12,7 +12,7 @@ namespace QuanLyThuVien
 {
     public partial class FormQLTacGia : Form
     {
-        TacGia tg = new TacGia();
+        Tg tg = new Tg();
         public FormQLTacGia()
         {
             InitializeComponent();
@@ -55,6 +55,7 @@ namespace QuanLyThuVien
         {
             string tim = txt_matacgia.Text.Trim();
             dataGridView1.DataSource = tg.SearchmaTacGia(tim);
+
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
