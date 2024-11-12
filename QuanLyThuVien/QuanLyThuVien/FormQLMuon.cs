@@ -12,9 +12,11 @@ namespace QuanLyThuVien
 {
     public partial class FormQLMuon : Form
     {
+        MuonTraSach muon = new MuonTraSach();
         public FormQLMuon()
         {
             InitializeComponent();
+            dgvMuonSach.DataSource = muon.GetAll();
         }
 
         private void FormQLMuon_Load(object sender, EventArgs e)
