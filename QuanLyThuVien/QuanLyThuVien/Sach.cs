@@ -18,20 +18,21 @@ namespace QuanLyThuVien
         // lay du lieu bang book
         public DataTable Getallbook()
         {
-            string sql = "SELECT * FROM Sach";
+            string sql = "SELECT Sach.MaSach,Sach.TenSach, Sach.NhaXuatBan, Sach.NamXuatBan, Sach.TheLoai, Sach.SoLuong, Sach.SoLuongConLai, Sach.Gia, TacGia.MaTacGia, TacGia.TenTacGia " +
+                "FROM Sach INNER JOIN TacGia ON Sach.MaTacGia = TacGia.MaTacGia";
             return kn.Readdata(sql);
         }
         // them sach
-        public void Createbook(string Masach, string Tensach,string Matg, string Tentg, string Nhaxb, int Namxb,string theloai, int Soluong,int soluongconlai,int gia)
+        public void Createbook(string Masach, string Tensach, string Matg, string Nhaxb, int Namxb, string theloai, int Soluong, int soluongconlai, string gia)
         {
-            string sql = "INSERT INTO Sach (MaSach,TenSach,MaTacGia,TenTacGia,NhaXuatBan,NamXuatBan,TheLoai,SoLuong,SoLuongConLai,Gia) " +
-                "VALUES (@MaSach, @TenSach,@MaTacGia,@TenTacGia,@NhaXuatBan,@NamXuatBan,@TheLoai,@SoLuong,@SoLuongConLai,@Gia)"; // truyen vao cac tham so 
+            string sql = "INSERT INTO Sach (MaSach, TenSach, NhaXuatBan, NamXuatBan, TheLoai, SoLuong, SoLuongConLai, Gia, MaTacGia) " +
+            "VALUES (@MaSach, @TenSach, @NhaXuatBan, @NamXuatBan, @TheLoai, @SoLuong, @SoLuongConLai, @Gia, @MaTacGia);";
+            // truyen vao cac tham so 
             SqlParameter[] sp = new SqlParameter[]
             {
                 new SqlParameter("@MaSach", Masach),
                 new SqlParameter("@TenSach", Tensach),
                 new SqlParameter("@MaTacGia", Matg),
-                new SqlParameter("@TenTacGia", Tentg),
                 new SqlParameter("@NhaXuatBan", Nhaxb),
                 new SqlParameter("@NamXuatBan", Namxb),
                 new SqlParameter("@TheLoai", theloai),
@@ -41,15 +42,15 @@ namespace QuanLyThuVien
             };
             kn.CUD(sql, sp);
         }
-        public void Updatebook(string Masach, string Tensach, string Matg, string Tentg, string Nhaxb, int Namxb, string theloai, int Soluong, int soluongconlai, int gia)
+        public void Updatebook(string Masach, string Tensach, string Matg, string Nhaxb, int Namxb, string theloai, int Soluong, int soluongconlai, string gia)
         {
-            string sql = "UPDATE Sach SET TenSach = @TenSach, MaTacGia = @MaTacGia, TenTacGia = @TenTacGia, NhaXuatBan = @NhaXuatBan, NamXuatBan=@NamXuatBan,Theloai = @TheLoai,SoLuong=@SoLuong, SoLuongConLai = @SoLuongConLai WHERE MaSach = @MaSach"; // truyen vao cac tham so 
+            string sql = "UPDATE Sach SET TenSach = @TenSach, NhaXuatBan = @NhaXuatBan, NamXuatBan = @NamXuatBan, TheLoai = @TheLoai, SoLuong = @SoLuong, SoLuongConLai = @SoLuongConLai, Gia = @Gia " +
+            "WHERE MaSach = @MaSach;"; // truyen vao cac tham so 
             SqlParameter[] sp = new SqlParameter[]
             {
                 new SqlParameter("@MaSach", Masach),
                 new SqlParameter("@TenSach", Tensach),
                 new SqlParameter("@MaTacGia", Matg),
-                new SqlParameter("@TenTacGia", Tentg),
                 new SqlParameter("@NhaXuatBan", Nhaxb),
                 new SqlParameter("@NamXuatBan", Namxb),
                 new SqlParameter("@TheLoai", theloai),
@@ -59,9 +60,9 @@ namespace QuanLyThuVien
             };
             kn.CUD(sql, sp);
         }
-        public void Deletebook(string Masach, string Tensach, string Matg, string Tentg, string Nhaxb, int Namxb, string theloai, int Soluong, int soluongconlai, int gia)
+        public void Deletebook(string Masach, string Tensach, string Matg, string Nhaxb, int Namxb, string theloai, int Soluong, int soluongconlai, string gia)
         {
-            string sql = "DELETE FROM Sach WHERE MaSach = @MaSach"; // truyen vao cac tham so 
+            string sql = "DELETE FROM Sach WHERE MaSach = @MaSach; "; // truyen vao cac tham so
             SqlParameter[] sp = new SqlParameter[]
             {
                 new SqlParameter("@MaSach", Masach)
