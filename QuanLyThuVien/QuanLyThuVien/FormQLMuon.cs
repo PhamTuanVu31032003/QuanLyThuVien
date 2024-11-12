@@ -28,5 +28,10 @@ namespace QuanLyThuVien
         {
             txtTim.Text = "acb";
         }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
