@@ -186,9 +186,13 @@ namespace QuanLyThuVien
 
                 if (result == DialogResult.Yes)
                 {
+                    string maSach = muonTra.GetMaSachByMaGiaoDich(maGiaoDich);
+                    int sluongMuon = muonTra.GetSoLuongMuonByMaGiaoDich(maGiaoDich);
+                    muonTra.UpdateSoLuongSachConSauTra(maSach, sluongMuon);
+
                     muonTra.DeleteMuon(maGiaoDich);
                     FormQLMuon_Load(sender, e);
-
+                    clear();
                     MessageBox.Show("Xóa thành công!");
                 }
             }
@@ -409,6 +413,19 @@ namespace QuanLyThuVien
             }
         }
 
+        private void clear() 
+        {
+            txtGiaSach.Clear();
+            txtMaGD.Clear();
+            txtMaSach.Clear();
+            txtSluong.Clear();
+            txtThanhTien.Clear();
+            cbDocGia.SelectedIndex = -1;
+            cbTenDG.SelectedIndex = -1;
+            cbTenSach.SelectedIndex = -1;
+            dtpNgayMuon.Value = DateTime.Now;
+            dtpNgayTra.Value = DateTime.Now;
+        }
         #endregion
     }
 }

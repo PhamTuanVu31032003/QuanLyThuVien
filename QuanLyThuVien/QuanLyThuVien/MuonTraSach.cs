@@ -132,6 +132,24 @@ namespace QuanLyThuVien
             return null; 
         }
 
+        //lấy sluong sách mượn theo mãGD
+        public int GetSoLuongMuonByMaGiaoDich(string maGiaoDich)
+        {
+            int soLuongMuon = 0;
+            string sql = "SELECT SoLuongMuon FROM MuonTra WHERE MaGiaoDich = @maGiaoDich";
+            SqlParameter[] sp = new SqlParameter[]
+            {
+                new SqlParameter("@maGiaoDich", maGiaoDich)
+            };
+
+            DataTable dt = kn.Readdata(sql, sp);
+            if (dt.Rows.Count > 0)
+            {
+                soLuongMuon = Convert.ToInt32(dt.Rows[0]["SoLuongMuon"]);
+            }
+
+            return soLuongMuon;
+        }
 
         //lấy mã sách theo mã giao dịch
         public string GetMaSachByMaGiaoDich(string maGiaoDich)
@@ -151,6 +169,7 @@ namespace QuanLyThuVien
 
             return maSach;
         }
+
         #endregion
 
         #region dùng cho form qly mượn
