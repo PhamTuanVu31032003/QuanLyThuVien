@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QuanLyThuVien
 {
@@ -16,6 +17,7 @@ namespace QuanLyThuVien
             kn = new Ketnoi();
         }
 
+        #region lấy các tt tù databsae
         // lay du lieu bang 
         public DataTable GetAll()
         {
@@ -23,71 +25,316 @@ namespace QuanLyThuVien
             return kn.Readdata(sql);
         }
 
-        // them muon
-        public void Create(string maGD, string maDG, string tenDG, string maTG, string tenTG, int Namxb, string theloai, int Soluong, int soluongconlai, int gia)
+        //lấy tên sách cho cccbox
+        public DataTable GetAllTenSach()
         {
-            string sql = "INSERT INTO Sach (MaSach,TenSach,MaTacGia,TenTacGia,NhaXuatBan,NamXuatBan,TheLoai,SoLuong,SoLuongConLai,Gia) " +
-                "VALUES (@MaSach, @TenSach,@MaTacGia,@TenTacGia,@NhaXuatBan,@NamXuatBan,@TheLoai,@SoLuong,@SoLuongConLai,@Gia)"; // truyen vao cac tham so 
-            SqlParameter[] sp = new SqlParameter[]
-            {
-                new SqlParameter("@MaSach", Masach),
-                new SqlParameter("@TenSach", Tensach),
-               new SqlParameter("@MaTacGia", Matg),
-                new SqlParameter("@TenTacGia", Tentg),
-                new SqlParameter("@NhaXuatBan", Nhaxb),
-                new SqlParameter("@NamXuatBan", Namxb),
-                new SqlParameter("@TheLoai", theloai),
-                new SqlParameter("@SoLuong", Soluong),
-                new SqlParameter("@SoLuongConLai", soluongconlai),
-                new SqlParameter("@Gia",gia)
-            };
-            kn.CUD(sql, sp);
+            string sql = "SELECT TenSach FROM Sach";
+            return kn.Readdata(sql);
         }
-        public void Updatebook(string Masach, string Tensach, string Matg, string Tentg, string Nhaxb, int Namxb, string theloai, int Soluong, int soluongconlai, int gia)
+
+        //lấy mã đọc gải cho cbbox
+        public DataTable GetAllMaDG()
         {
-            string sql = "UPDATE Sach SET TenSach = @TenSach, MaTacGia = @MaTacGia, TenTacGia = @TenTacGia, NhaXuatBan = @NhaXuatBan, NamXuatBan=@NamXuatBan,Theloai = @TheLoai,SoLuong=@SoLuong, SoLuongConLai = @SoLuongConLai WHERE MaSach = @MaSach"; // truyen vao cac tham so 
-            SqlParameter[] sp = new SqlParameter[]
-            {
-                new SqlParameter("@MaSach", Masach),
-                new SqlParameter("@TenSach", Tensach),
-                new SqlParameter("@MaTacGia", Matg),
-                new SqlParameter("@TenTacGia", Tentg),
-                new SqlParameter("@NhaXuatBan", Nhaxb),
-                new SqlParameter("@NamXuatBan", Namxb),
-                new SqlParameter("@TheLoai", theloai),
-                new SqlParameter("@SoLuong", Soluong),
-                new SqlParameter("@SoLuongConLai", soluongconlai),
-                new SqlParameter("@Gia",gia)
-            };
-            kn.CUD(sql, sp);
+            string sql = "SELECT MaDocGia FROM DocGia";
+            return kn.Readdata(sql);
         }
-        public void Deletebook(string Masach, string Tensach, string Matg, string Tentg, string Nhaxb, int Namxb, string theloai, int Soluong, int soluongconlai, int gia)
+
+        //lấy tên độc giả cho cbBox
+        public DataTable GetAllTenDG()
         {
-            string sql = "DELETE FROM Sach WHERE MaSach = @MaSach"; // truyen vao cac tham so 
-            SqlParameter[] sp = new SqlParameter[]
-            {
-                new SqlParameter("@MaSach", Masach)
-            };
-            kn.CUD(sql, sp);
+            string sql = "SELECT HoTen FROM DocGia";
+            return kn.Readdata(sql);
         }
-        public DataTable Searchmabook(string Masach)
+
+
+        //lấy dữ liệu cho form Trả Sách
+        public DataTable GetTrasach()
         {
-            string sql = "SELECT * FROM Sach Where MaSach = @MaSach";
+            string sql = "SELECT MaGiaoDich, MaDocGia, HoTen, TenSach, SoLuongMuon, NgayMuon, NgayPhaiTra, NgayTra, TinhTrang FROM MuonTra";
+            return kn.Readdata(sql);
+        }
+
+
+        //lấy giá tiền sách
+        public DataTable getPrice(string maS)
+        {
+            string sql = "SELECT Gia FROM Sach WHERE MaSach = @maS";
             SqlParameter[] sp = new SqlParameter[]
             {
-                new SqlParameter("@MaSach", Masach)
+                new SqlParameter("@maS", maS)
             };
             return kn.Readdata(sql, sp);
         }
-        public DataTable Searchtenbook(string Tensach)
+
+
+        //lấy số lượng sách còn lại
+        public DataTable getTotal(string maS)
         {
-            string sql = "SELECT * FROM Sach Where TenSach = @TenSach";
+            string sql = "SELECT SoLuongConLai FROM Sach WHERE MaSach = @maS";
             SqlParameter[] sp = new SqlParameter[]
             {
-                new SqlParameter("@tensach", Tensach)
+                new SqlParameter("@maS", maS)
             };
             return kn.Readdata(sql, sp);
         }
+
+
+        //lấy mã sách
+        public string getMaSach(string tenS)
+        {
+            string sql = "SELECT MaSach FROM Sach WHERE TenSach  = @tenS";
+            SqlParameter[] sp = new SqlParameter[]
+            {
+                new SqlParameter("@tenS", tenS)
+            };
+
+            DataTable dt = kn.Readdata(sql, sp);
+            if (dt.Rows.Count > 0)
+            {
+                return dt.Rows[0]["MaSach"].ToString();
+            }
+            return null; 
+        }
+
+
+        //lấy tên độc giả theo mã
+        public string GetTenDG(string maDocGia)
+        {
+            string sql = "SELECT HoTen FROM DocGia WHERE MaDocGia = @maDocGia";
+            SqlParameter[] sp = new SqlParameter[]
+            {
+                 new SqlParameter("@maDocGia", maDocGia)
+            };
+
+            DataTable dt = kn.Readdata(sql, sp);
+            if (dt.Rows.Count > 0)
+            {
+                return dt.Rows[0]["HoTen"].ToString();
+            }
+            return null; 
+        }
+
+
+        //lấy mã độc giả theo tên
+        public string GetMaDG(string tenDocGia)
+        {
+            string sql = "SELECT MaDocGia FROM DocGia WHERE HoTen = @tenDocGia";
+            SqlParameter[] sp = new SqlParameter[]
+            {
+                new SqlParameter("@tenDocGia", tenDocGia)
+            };
+
+            DataTable dt = kn.Readdata(sql, sp);
+            if (dt.Rows.Count > 0)
+            {
+                return dt.Rows[0]["MaDocGia"].ToString();
+            }
+            return null; 
+        }
+
+
+        //lấy mã sách theo mã giao dịch
+        public string GetMaSachByMaGiaoDich(string maGiaoDich)
+        {
+            string maSach = null;
+            string sql = "SELECT MaSach FROM MuonTra WHERE MaGiaoDich = @maGiaoDich";
+            SqlParameter[] sp = new SqlParameter[]
+            {
+                new SqlParameter("@maGiaoDich", maGiaoDich)
+            };
+
+            DataTable dt = kn.Readdata(sql, sp);
+            if (dt.Rows.Count > 0)
+            {
+                maSach = dt.Rows[0]["MaSach"].ToString();
+            }
+
+            return maSach;
+        }
+        #endregion
+
+        #region dùng cho form qly mượn
+
+        //thêm lượt mượn
+        public void CreateMuon(string maGD, string maDG, string tenDG, string maS, string tenS,
+            int Soluong, DateTime ngayMuon, DateTime ngayTra, int thanhTien )
+        {
+            string sql = "INSERT INTO MuonTra (MaGiaoDich, MaDocGia, HoTen, MaSach, TenSach, " +
+                "SoLuongMuon, NgayMuon, NgayPhaiTra, ThanhTien) " +
+                "VALUES (@a, @b, @c, @d, @e, @g, @h, @i, @k)"; 
+            SqlParameter[] sp = new SqlParameter[]
+            {
+                new SqlParameter("@a", maGD),
+                new SqlParameter("@b", maDG),
+                new SqlParameter("@c", tenDG),
+                new SqlParameter("@d", maS),
+                new SqlParameter("@e", tenS),
+                new SqlParameter("@g", Soluong),
+                new SqlParameter("@h", ngayMuon),
+                new SqlParameter("@i", ngayTra),
+                new SqlParameter("@k", thanhTien)
+            };
+            kn.CUD(sql, sp);
+        }
+
+        //cập nhật thông tin mượn
+        public void UpdateMuon(string maGD, string maDG, string tenDG, string maS, string tenS,
+            int Soluong, DateTime ngayMuon, DateTime ngayTra, int thanhTien)
+        {
+            string sql = "UPDATE MuonTra SET MaDocGia = @b, HoTen = @c, MaSach = @d, TenSach = @e," +
+                " SoLuongMuon = @g, NgayMuon = @h, NgayPhaiTra = @i, ThanhTien = @k " +
+                " WHERE MaGiaoDich = @a "; 
+            SqlParameter[] sp = new SqlParameter[]
+            {
+                new SqlParameter("@a", maGD),
+                new SqlParameter("@b", maDG),
+                new SqlParameter("@c", tenDG),
+                new SqlParameter("@d", maS),
+                new SqlParameter("@e", tenS),
+                new SqlParameter("@g", Soluong),
+                new SqlParameter("@h", ngayMuon),
+                new SqlParameter("@i", ngayTra),
+                new SqlParameter("@k", thanhTien)
+            };
+            kn.CUD(sql, sp);
+        }
+
+        //update số lượng sách sáu khi mượn
+        public void UpdateSoLuongSachCon(string maSach, int soLuongMuon)
+        {
+            string sql = "UPDATE Sach SET SoLuongConLai = SoLuongConLai - @soLuongMuon WHERE MaSach = @maSach";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@maSach", maSach),
+                new SqlParameter("@soLuongMuon", soLuongMuon)
+            };
+            kn.CUD(sql, parameters);
+        }
+
+        //xóa sai mượn
+        public void DeleteMuon(string maGD)
+        {
+            string sql = "DELETE FROM MuonTra WHERE MaGiaoDich = @a"; 
+            SqlParameter[] sp = new SqlParameter[]
+            {
+                new SqlParameter("@a", maGD)
+            };
+            kn.CUD(sql, sp);
+        }
+        #endregion
+
+        #region dùng cho qly trả
+        //kiểm tr tình trạng trả sách
+        public string KiemTraTinhTrang(DateTime? ngayTra, DateTime ngayPhaiTra)
+        {
+            if (ngayTra == null)
+            {
+                if (DateTime.Now > ngayPhaiTra)
+                {
+                    return "Đã quá hạn";
+                }
+                else
+                {
+                    return "Chưa trả";
+                }
+            }
+            else
+            {
+                if (ngayTra > ngayPhaiTra)
+                {
+                    return "Trả quá hạn";
+                }
+                else
+                {
+                    return "Đã trả";
+                }
+            }
+        }
+
+        //cập nhật tình trạng
+        public void CapNhatTinhTrang(string maGD, string tinhTrang)
+        {
+            string sql = "UPDATE MuonTra SET TinhTrang = @tinhTrang WHERE MaGiaoDich = @maGD";
+            SqlParameter[] sp = new SqlParameter[]
+            {
+                new SqlParameter("@tinhTrang", tinhTrang),
+                new SqlParameter("@maGD", maGD)
+            };
+            kn.CUD(sql, sp);
+        }
+
+        //cập nhật thông tin trả
+        public void UpdateTra(string maGD, DateTime? ngayTra, string tinhTrang)
+        {
+            string sql = "UPDATE MuonTra SET NgayTra = @ngayTra, TinhTrang = @tinhTrang WHERE MaGiaoDich = @maGD "; 
+            SqlParameter[] sp = new SqlParameter[]
+            {
+                new SqlParameter("@maGD", maGD),
+                new SqlParameter("@ngayTra", ngayTra.HasValue ? (object)ngayTra.Value : DBNull.Value),
+                new SqlParameter("@tinhTrang", tinhTrang)
+            };
+            kn.CUD(sql, sp);
+        }
+
+         //update sluong sách sau khi trả
+        public void UpdateSoLuongSachConSauTra(string maSach, int soLuongTra)
+        {
+            string sql = "UPDATE Sach SET SoLuongConLai = SoLuongConLai + @soLuongTra WHERE MaSach = @maSach";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@maSach", maSach),
+                new SqlParameter("@soLuongTra", soLuongTra)
+            };
+            kn.CUD(sql, parameters);
+        }
+
+        //xóa sai trả
+        public void DeleteTra(string maGD, DateTime ngayPhaiTra)
+        {
+            string tinhTrang = KiemTraTinhTrang(null, ngayPhaiTra);
+
+            string sql = "UPDATE MuonTra SET NgayTra = NULL, TinhTrang = @tinhTrang WHERE MaGiaoDich = @maGD";
+            SqlParameter[] sp = new SqlParameter[]
+            {
+                new SqlParameter("@maGD", maGD),
+                new SqlParameter("@tinhTrang", tinhTrang)
+            };
+
+            try
+            {
+                kn.CUD(sql, sp);
+                MessageBox.Show("Cập nhật trạng thái thành công.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi cập nhật trạng thái: " + ex.Message);
+            }
+        }
+        #endregion
+
+        #region tìm kiếm theo tên & mã độc giả 
+        //tìm kiếm
+        public DataTable SearchMA(string maDG)
+        {
+            string sql = "SELECT * FROM MuonTra Where MaDocGia = @ma";
+            SqlParameter[] sp = new SqlParameter[]
+            {
+                new SqlParameter("@ma", maDG)
+            };
+            return kn.Readdata(sql, sp);
+        }
+        public DataTable SearchTEN(string tenDG)
+        {
+            string sql = "SELECT * FROM MuonTra WHERE HoTen LIKE @tenDocGia";
+            SqlParameter[] sp = new SqlParameter[]
+            {
+                new SqlParameter("@tenDocGia", "%" + tenDG + "%") 
+            };
+
+            return kn.Readdata(sql, sp);
+        }
+
+        #endregion
     }
 }
 

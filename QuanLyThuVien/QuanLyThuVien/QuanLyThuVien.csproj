@@ -113,6 +113,9 @@
     <EmbeddedResource Include="FormHeThong.resx">
       <DependentUpon>FormHeThong.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormQLTra.resx">
+      <DependentUpon>FormQLTra.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
