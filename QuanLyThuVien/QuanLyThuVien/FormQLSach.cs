@@ -18,20 +18,24 @@ namespace QuanLyThuVien
         public FormQLSach()
         {
             InitializeComponent();
+            LoadMaTacGiaComboBox();
         }
 
         private void btn_them_Click(object sender, EventArgs e)
         {
             string Masach = tb_masach.Text;
             string Tensach = tb_tensach.Text;
-            string Matg = cb_matg.Items.ToString();
+            string Matg = cb_matg.SelectedValue.ToString(); // Lấy mã tác giả đúng
             string Nhaxb = tb_nhaxb.Text;
             int Namxb = int.Parse(tb_namxb.Text);
             string theloai = tb_theloai.Text;
             int Soluong = int.Parse(tb_soluong.Text);
             int soluongconlai = int.Parse(tb_soluongcl.Text);
             string gia = tb_gia.Text;
+
             sach.Createbook(Masach, Tensach, Matg, Nhaxb, Namxb, theloai, Soluong, soluongconlai, gia);
+            dgv_sach.DataSource = null;
+            dgv_sach.Rows.Clear();
             FormQLSach_Load(sender, e);
         }
 
@@ -43,15 +47,10 @@ namespace QuanLyThuVien
         private void btn_xoa_Click(object sender, EventArgs e)
         {
             string Masach = tb_masach.Text;
-            string Tensach = tb_tensach.Text;
-            string Matg = cb_matg.Items.ToString();
-            string Nhaxb = tb_nhaxb.Text;
-            int Namxb = int.Parse(tb_namxb.Text);
-            string theloai = tb_theloai.Text;
-            int Soluong = int.Parse(tb_soluong.Text);
-            int soluongconlai = int.Parse(tb_soluongcl.Text);
-            string gia = tb_gia.Text;
-            sach.Deletebook(Masach, Tensach, Matg, Nhaxb, Namxb, theloai, Soluong, soluongconlai, gia);
+
+            sach.Deletebook(Masach);
+            dgv_sach.DataSource = null;
+            dgv_sach.Rows.Clear();
             FormQLSach_Load(sender, e);
         }
 
@@ -99,6 +98,17 @@ namespace QuanLyThuVien
                 tb_soluongcl.Text = row.Cells["SoLuongConLai"].Value.ToString();
                 tb_gia.Text = row.Cells["Gia"].Value.ToString();
             }
+        }
+        private void LoadMaTacGiaComboBox()
+        {
+            // Lấy danh sách mã nhà cung cấp
+            DataTable ma = sach.Getallmatg();
+
+            cb_matg.DataSource = ma;
+            cb_matg.DisplayMember = "MaTacGia"; // Cột hiển thị
+            cb_matg.ValueMember = "MaTacGia"; // Giá trị mã nhà cung cấp
+
+            cb_matg.SelectedIndex = -1; // Không chọn mục nào ban đầu
         }
     }
 }
