@@ -344,7 +344,7 @@ namespace QuanLyThuVien
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row =dgvMuonSach.Rows[e.RowIndex];
+                DataGridViewRow row = dgvMuonSach.Rows[e.RowIndex];
 
                 txtMaGD.Text = row.Cells["MaGiaoDich"].Value.ToString();
                 cbDocGia.Text = row.Cells["MaDocGia"].Value.ToString();

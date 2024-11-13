@@ -276,7 +276,7 @@ namespace QuanLyThuVien
             kn.CUD(sql, sp);
         }
 
-        //cập nhật trạng thái sau xóa
+        //cập nhật tình trạng sau xóa
         public void CapNhatTinhTrangSauXoa(string maGD, string tinhTrang)
         {
             string sql = "UPDATE MuonTra SET TinhTrang = @tinhTrang WHERE MaGiaoDich = @maGiaoDich";
