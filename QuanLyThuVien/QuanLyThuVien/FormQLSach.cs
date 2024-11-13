@@ -32,8 +32,8 @@ namespace QuanLyThuVien
             int Soluong = int.Parse(tb_soluong.Text);
             int soluongconlai = int.Parse(tb_soluongcl.Text);
             string gia = tb_gia.Text;
-
-            sach.Createbook(Masach, Tensach, Matg, Nhaxb, Namxb, theloai, Soluong, soluongconlai, gia);
+            int giamuon = int.Parse(tb_giamuon.Text);
+            sach.Createbook(Masach, Tensach, Matg, Nhaxb, Namxb, theloai, Soluong, soluongconlai, gia, giamuon);
             dgv_sach.DataSource = null;
             dgv_sach.Rows.Clear();
             FormQLSach_Load(sender, e);
@@ -65,7 +65,8 @@ namespace QuanLyThuVien
             int Soluong = int.Parse(tb_soluong.Text);
             int soluongconlai = int.Parse(tb_soluongcl.Text);
             string gia = tb_gia.Text;
-            sach.Updatebook(Masach, Tensach, Matg, Nhaxb, Namxb, theloai, Soluong, soluongconlai, gia);
+            int giamuon = int.Parse(tb_giamuon.Text);
+            sach.Updatebook(Masach, Tensach, Matg, Nhaxb, Namxb, theloai, Soluong, soluongconlai, gia, giamuon);
             FormQLSach_Load(sender, e);
         }
 
@@ -97,6 +98,7 @@ namespace QuanLyThuVien
                 tb_soluong.Text = row.Cells["SoLuong"].Value.ToString();
                 tb_soluongcl.Text = row.Cells["SoLuongConLai"].Value.ToString();
                 tb_gia.Text = row.Cells["Gia"].Value.ToString();
+                tb_gia.Text = row.Cells["GiaMuon"].Value.ToString();
             }
         }
         private void LoadMaTacGiaComboBox()
