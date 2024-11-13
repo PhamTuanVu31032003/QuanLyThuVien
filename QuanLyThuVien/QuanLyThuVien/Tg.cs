@@ -66,10 +66,10 @@ namespace QuanLyThuVien
         }
         public DataTable SearchtenTacGia(string TenTacGia)
         {
-            string sql = "SELECT * FROM TacGia Where TenTacGia = @tenTacGia";
+            string sql = "SELECT * FROM TacGia Where TenTacGia LIKE @tenTacGia";
             SqlParameter[] sp = new SqlParameter[]
             {
-                new SqlParameter("@tenTacGia", TenTacGia)
+                new SqlParameter("@tenTacGia", "%" + TenTacGia + "%")
             };
             return kn.Readdata(sql, sp);
         }
