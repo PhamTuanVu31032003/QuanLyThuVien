@@ -29,7 +29,6 @@ namespace QuanLyThuVien
             dgvMuonSach.DataSource = muonTra.GetAll();
         }
 
-        #region các nút
         private void btnTim_Click(object sender, EventArgs e)
         {
             try
@@ -44,12 +43,11 @@ namespace QuanLyThuVien
 
                 DataTable ketQuaTimKiem;
 
-                // Kiểm tra chỉ số lựa chọn của ComboBox để xác định kiểu tìm kiếm
-                if (cbTim.SelectedIndex == 0) // Lựa chọn đầu tiên: Tìm kiếm theo mã độc giả
+                if (cbTim.SelectedIndex == 0) 
                 {
                     ketQuaTimKiem = muonTra.SearchMA(giaTriTimKiem);
                 }
-                else if (cbTim.SelectedIndex == 1) // Lựa chọn thứ hai: Tìm kiếm theo tên độc giả
+                else if (cbTim.SelectedIndex == 1) 
                 {
                     ketQuaTimKiem = muonTra.SearchTEN(giaTriTimKiem);
                 }
@@ -59,7 +57,6 @@ namespace QuanLyThuVien
                     return;
                 }
 
-                // Hiển thị kết quả tìm kiếm (cập nhật DataGridView hoặc bất kỳ điều khiển nào bạn đang sử dụng để hiển thị dữ liệu)
                 dgvMuonSach.DataSource = ketQuaTimKiem;
             }
             catch (Exception ex)
@@ -260,18 +257,15 @@ namespace QuanLyThuVien
 
         }
 
-        #endregion
-
-        #region load ttin cho cboboc
         private void LoadSachToComboBox()
         {
             DataTable dtsach = muonTra.GetAllTenSach();
 
             cbTenSach.DataSource = dtsach;
-            cbTenSach.DisplayMember = "TenSach"; // Cột hiển thị
+            cbTenSach.DisplayMember = "TenSach";
             cbTenSach.ValueMember = "TenSach"; 
 
-            cbTenSach.SelectedIndex = -1; // Không chọn mục nào ban đầu
+            cbTenSach.SelectedIndex = -1; 
         }
 
         private void LoadMaDGToComboBox()
@@ -279,10 +273,10 @@ namespace QuanLyThuVien
             DataTable dtDG = muonTra.GetAllMaDG();
 
             cbDocGia.DataSource = dtDG;
-            cbDocGia.DisplayMember = "MaDocGia"; // Cột hiển thị
+            cbDocGia.DisplayMember = "MaDocGia";
             cbDocGia.ValueMember = "MaDocGia";
 
-            cbDocGia.SelectedIndex = -1; // Không chọn mục nào ban đầu
+            cbDocGia.SelectedIndex = -1;
         }
 
         private void LoadTenDGToComboBox()
@@ -290,37 +284,30 @@ namespace QuanLyThuVien
             DataTable dtTenDG = muonTra.GetAllTenDG();
 
             cbTenDG.DataSource = dtTenDG;
-            cbTenDG.DisplayMember = "HoTen"; // Cột hiển thị
+            cbTenDG.DisplayMember = "HoTen";
             cbTenDG.ValueMember = "HoTen";
 
-            cbTenDG.SelectedIndex = -1; // Không chọn mục nào ban đầu
+            cbTenDG.SelectedIndex = -1; 
         }
 
-        #endregion
-
-        #region xử lý tính toán & hiển thị lên textbox
         private void cbTenSach_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Kiểm tra xem ComboBox có giá trị hợp lệ không
             if (cbTenSach.SelectedItem != null && cbTenSach.SelectedIndex != -1)
             {
                 string tenSach = cbTenSach.SelectedValue?.ToString();
 
                 if (!string.IsNullOrEmpty(tenSach))
                 {
-                    // Lấy mã sách từ tên sách
 
                     string maSach = muonTra.getMaSach(tenSach);
 
-                    if (!string.IsNullOrEmpty(maSach)) // Kiểm tra mã sách có tồn tại không
+                    if (!string.IsNullOrEmpty(maSach))
                     {
-                        // Lấy giá tiền từ cơ sở dữ liệu dựa trên mã sách
                         DataTable dtGia = muonTra.getPrice(maSach);
                         if (dtGia != null && dtGia.Rows.Count > 0)
                         {
-                            // Hiển thị giá tiền vào textBoxGiaTien
                             txtGiaSach.Text = dtGia.Rows[0]["Gia"].ToString();
-                            TinhThanhTien(); // Gọi hàm tính toán thành tiền
+                            TinhThanhTien();
                         }
                         else
                         {
@@ -337,11 +324,10 @@ namespace QuanLyThuVien
 
         private void TinhThanhTien()
         {
-            // Kiểm tra nếu số lượng và giá tiền có giá trị hợp lệ
             if (int.TryParse(txtSluong.Text, out int soLuong) && decimal.TryParse(txtGiaSach.Text, out decimal giaTien))
             {
                 decimal thanhTien = soLuong * giaTien;
-                txtThanhTien.Text = thanhTien.ToString("N0"); // Định dạng tiền tệ
+                txtThanhTien.Text = thanhTien.ToString("N0");
             }
             else
             {
@@ -426,6 +412,5 @@ namespace QuanLyThuVien
             dtpNgayMuon.Value = DateTime.Now;
             dtpNgayTra.Value = DateTime.Now;
         }
-        #endregion
     }
 }

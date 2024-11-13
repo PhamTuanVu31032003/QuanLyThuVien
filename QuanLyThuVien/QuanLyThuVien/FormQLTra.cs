@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Net.Http.Headers;
@@ -25,7 +26,6 @@ namespace QuanLyThuVien
             dgvTraSach.DataSource = tra.GetTrasach();
         }
 
-        #region các nút
         private void btnTim_Click(object sender, EventArgs e)
         {
             try
@@ -110,7 +110,6 @@ namespace QuanLyThuVien
         private void btnXoa_Click(object sender, EventArgs e)
         {
             string maGD = txtMaGD.Text.Trim();
-            DateTime ngayPhaiTra = dtpNgayPTra.Value;
 
             if (!string.IsNullOrEmpty(maGD))
             {
@@ -118,8 +117,14 @@ namespace QuanLyThuVien
 
                 if (result == DialogResult.Yes)
                 {
-                    tra.DeleteTra(maGD, ngayPhaiTra);
+                    DateTime ngayPhaiTra = dtpNgayPTra.Value;
+                    DateTime? ngayTra = DateTime.Now;
+
+                    tra.DeleteTra(maGD, dtpNgayPTra.Value);
+                    string tinhTrangMoi = tra.KiemTraTinhTrang(ngayTra, ngayPhaiTra);
+                    tra.CapNhatTinhTrangSauXoa(maGD, tinhTrangMoi);
                     FormQLTra_Load(sender, e);
+
                 }
                 else
                 {
@@ -132,9 +137,7 @@ namespace QuanLyThuVien
             }
         }
 
-        #endregion
 
-        #region xử lý các hiển thị
         private void dgvTraSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -173,6 +176,5 @@ namespace QuanLyThuVien
                 FormQLTra_Load(sender, e);
             }
         }
-        #endregion
     }
 }

@@ -17,7 +17,6 @@ namespace QuanLyThuVien
             kn = new Ketnoi();
         }
 
-        #region lấy các tt tù databsae
         // lay du lieu bang 
         public DataTable GetAll()
         {
@@ -170,10 +169,7 @@ namespace QuanLyThuVien
             return maSach;
         }
 
-        #endregion
-
-        #region dùng cho form qly mượn
-
+        //MUON  MUON    MUON    MUON    MUON    MUON
         //thêm lượt mượn
         public void CreateMuon(string maGD, string maDG, string tenDG, string maS, string tenS,
             int Soluong, DateTime ngayMuon, DateTime ngayTra, int thanhTien )
@@ -240,9 +236,7 @@ namespace QuanLyThuVien
             };
             kn.CUD(sql, sp);
         }
-        #endregion
 
-        #region dùng cho qly trả
         //kiểm tr tình trạng trả sách
         public string KiemTraTinhTrang(DateTime? ngayTra, DateTime ngayPhaiTra)
         {
@@ -282,6 +276,20 @@ namespace QuanLyThuVien
             kn.CUD(sql, sp);
         }
 
+        //cập nhật trạng thái sau xóa
+        public void CapNhatTinhTrangSauXoa(string maGD, string tinhTrang)
+        {
+            string sql = "UPDATE MuonTra SET TinhTrang = @tinhTrang WHERE MaGiaoDich = @maGiaoDich";
+            SqlParameter[] sp = new SqlParameter[]
+            {
+                new SqlParameter("@tinhTrang", tinhTrang), 
+                new SqlParameter("@maGiaoDich", maGD)
+            };
+
+            kn.CUD(sql, sp);
+        }
+
+        //TRA       TRA     TRA     TRA     TRA     TRA     TRA     TRA     
         //cập nhật thông tin trả
         public void UpdateTra(string maGD, DateTime? ngayTra, string tinhTrang)
         {
@@ -329,9 +337,8 @@ namespace QuanLyThuVien
                 MessageBox.Show("Lỗi khi cập nhật trạng thái: " + ex.Message);
             }
         }
-        #endregion
+        
 
-        #region tìm kiếm theo tên & mã độc giả 
         //tìm kiếm
         public DataTable SearchMA(string maDG)
         {
@@ -353,7 +360,6 @@ namespace QuanLyThuVien
             return kn.Readdata(sql, sp);
         }
 
-        #endregion
     }
 }
 
