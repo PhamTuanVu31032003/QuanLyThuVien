@@ -53,8 +53,40 @@ namespace QuanLyThuVien
 
         private void btntimkiem_Click(object sender, EventArgs e)
         {
-            string tim = txt_matacgia.Text.Trim();
-            dataGridView1.DataSource = tg.SearchmaTacGia(tim);
+            try
+            {
+                string giaTriTimKiem = txtTim.Text.Trim();
+
+                if (string.IsNullOrEmpty(giaTriTimKiem))
+                {
+                    MessageBox.Show("Vui lòng nhập giá trị tìm kiếm.");
+                    return;
+                }
+
+                DataTable ketQuaTimKiem;
+
+                
+                if (cbTim.SelectedIndex == 0) 
+                {
+                    ketQuaTimKiem = tg.SearchmaTacGia(giaTriTimKiem);
+                }
+                else if (cbTim.SelectedIndex == 1) // Lựa chọn thứ hai: Tìm kiếm theo tên độc giả
+                {
+                    ketQuaTimKiem = tg.SearchtenTacGia(giaTriTimKiem);
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn kiểu tìm kiếm.");
+                    return;
+                }
+
+                // Hiển thị kết quả tìm kiếm (cập nhật DataGridView hoặc bất kỳ điều khiển nào bạn đang sử dụng để hiển thị dữ liệu)
+                dataGridView1.DataSource = ketQuaTimKiem;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
+            }
 
         }
 
