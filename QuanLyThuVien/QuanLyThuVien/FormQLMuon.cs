@@ -304,9 +304,11 @@ namespace QuanLyThuVien
                     if (!string.IsNullOrEmpty(maSach))
                     {
                         DataTable dtGia = muonTra.getPrice(maSach);
+                        DataTable dtGiaMuon = muonTra.getPriceMuon(maSach);
                         if (dtGia != null && dtGia.Rows.Count > 0)
                         {
                             txtGiaSach.Text = dtGia.Rows[0]["Gia"].ToString();
+                            txtGiaMuon.Text = dtGiaMuon.Rows[0]["GiaMuon"].ToString();
                             TinhThanhTien();
                         }
                         else
@@ -324,9 +326,10 @@ namespace QuanLyThuVien
 
         private void TinhThanhTien()
         {
-            if (int.TryParse(txtSluong.Text, out int soLuong) && decimal.TryParse(txtGiaSach.Text, out decimal giaTien))
+            if (int.TryParse(txtSluong.Text, out int soLuong) && decimal.TryParse(txtGiaSach.Text, out decimal giaTien) 
+                && decimal.TryParse(txtGiaMuon.Text, out decimal giaMuon))
             {
-                decimal thanhTien = soLuong * giaTien;
+                decimal thanhTien = (soLuong * giaMuon) + giaTien;
                 txtThanhTien.Text = thanhTien.ToString("N0");
             }
             else

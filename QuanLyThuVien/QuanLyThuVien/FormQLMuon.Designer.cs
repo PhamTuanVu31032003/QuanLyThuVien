@@ -64,6 +64,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txtThanhTien = new System.Windows.Forms.TextBox();
             this.btnKienTra = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtGiaMuon = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMuonSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -280,7 +282,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(254, 139);
+            this.label12.Location = new System.Drawing.Point(247, 116);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(56, 22);
             this.label12.TabIndex = 16;
@@ -288,7 +290,7 @@
             // 
             // txtSluong
             // 
-            this.txtSluong.Location = new System.Drawing.Point(144, 136);
+            this.txtSluong.Location = new System.Drawing.Point(144, 113);
             this.txtSluong.Name = "txtSluong";
             this.txtSluong.Size = new System.Drawing.Size(91, 30);
             this.txtSluong.TabIndex = 15;
@@ -297,7 +299,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(13, 139);
+            this.label11.Location = new System.Drawing.Point(13, 116);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(82, 22);
             this.label11.TabIndex = 14;
@@ -306,7 +308,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(13, 85);
+            this.label8.Location = new System.Drawing.Point(13, 77);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(80, 22);
             this.label8.TabIndex = 8;
@@ -366,6 +368,8 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.txtGiaMuon);
+            this.groupBox5.Controls.Add(this.label15);
             this.groupBox5.Controls.Add(this.cbTenSach);
             this.groupBox5.Controls.Add(this.label14);
             this.groupBox5.Controls.Add(this.txtGiaSach);
@@ -388,7 +392,7 @@
             // cbTenSach
             // 
             this.cbTenSach.FormattingEnabled = true;
-            this.cbTenSach.Location = new System.Drawing.Point(145, 84);
+            this.cbTenSach.Location = new System.Drawing.Point(144, 69);
             this.cbTenSach.Name = "cbTenSach";
             this.cbTenSach.Size = new System.Drawing.Size(204, 30);
             this.cbTenSach.TabIndex = 21;
@@ -397,7 +401,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(13, 195);
+            this.label14.Location = new System.Drawing.Point(16, 161);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(73, 22);
             this.label14.TabIndex = 19;
@@ -406,7 +410,7 @@
             // txtGiaSach
             // 
             this.txtGiaSach.Enabled = false;
-            this.txtGiaSach.Location = new System.Drawing.Point(144, 192);
+            this.txtGiaSach.Location = new System.Drawing.Point(144, 158);
             this.txtGiaSach.Name = "txtGiaSach";
             this.txtGiaSach.Size = new System.Drawing.Size(194, 30);
             this.txtGiaSach.TabIndex = 20;
@@ -438,6 +442,23 @@
             this.btnKienTra.Text = "Kiểm tra";
             this.btnKienTra.UseVisualStyleBackColor = true;
             this.btnKienTra.Click += new System.EventHandler(this.btnKienTra_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(16, 206);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(89, 22);
+            this.label15.TabIndex = 22;
+            this.label15.Text = "Giá mượn";
+            // 
+            // txtGiaMuon
+            // 
+            this.txtGiaMuon.Enabled = false;
+            this.txtGiaMuon.Location = new System.Drawing.Point(144, 203);
+            this.txtGiaMuon.Name = "txtGiaMuon";
+            this.txtGiaMuon.Size = new System.Drawing.Size(194, 30);
+            this.txtGiaMuon.TabIndex = 23;
             // 
             // FormQLMuon
             // 
@@ -507,5 +528,7 @@
         private System.Windows.Forms.Button btnKienTra;
         private System.Windows.Forms.ComboBox cbDocGia;
         private System.Windows.Forms.ComboBox cbTenDG;
+        private System.Windows.Forms.TextBox txtGiaMuon;
+        private System.Windows.Forms.Label label15;
     }
 }

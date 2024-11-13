@@ -65,7 +65,16 @@ namespace QuanLyThuVien
             return kn.Readdata(sql, sp);
         }
 
-
+        //lấy giá cho mượn
+        public DataTable getPriceMuon(string maS)
+        {
+            string sql = "SELECT GiaMuon FROM Sach WHERE MaSach = @maS";
+            SqlParameter[] sp = new SqlParameter[]
+            {
+                new SqlParameter("@maS", maS)
+            };
+            return kn.Readdata(sql, sp);
+        }
         //lấy số lượng sách còn lại
         public DataTable getTotal(string maS)
         {
