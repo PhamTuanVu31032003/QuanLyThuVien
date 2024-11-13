@@ -110,6 +110,13 @@ namespace QuanLyThuVien
         private void btnXoa_Click(object sender, EventArgs e)
         {
             string maGD = txtMaGD.Text.Trim();
+            string sluongMuon = txtSluong.Text;
+            string maSach = tra.GetMaSachByMaGiaoDich(maGD);
+            if (!int.TryParse(sluongMuon, out int soLuongTra) || soLuongTra <= 0)
+            {
+                MessageBox.Show("Số lượng mượn phải là số nguyên dương.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (!string.IsNullOrEmpty(maGD))
             {
@@ -123,6 +130,7 @@ namespace QuanLyThuVien
                     tra.DeleteTra(maGD, dtpNgayPTra.Value);
                     string tinhTrangMoi = tra.KiemTraTinhTrang(ngayTra, ngayPhaiTra);
                     tra.CapNhatTinhTrangSauXoa(maGD, tinhTrangMoi);
+                    tra.UpdateSoLuongSachCon(maSach, soLuongTra);
                     FormQLTra_Load(sender, e);
 
                 }
