@@ -39,6 +39,8 @@
             this.btn_xoa = new System.Windows.Forms.Button();
             this.btn_them = new System.Windows.Forms.Button();
             this.gr = new System.Windows.Forms.GroupBox();
+            this.cb_matg = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.tb_gia = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.tb_theloai = new System.Windows.Forms.TextBox();
@@ -52,8 +54,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cb_matg = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.tb_giamuon = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_sach)).BeginInit();
             this.gr.SuspendLayout();
             this.SuspendLayout();
@@ -184,6 +186,8 @@
             // 
             // gr
             // 
+            this.gr.Controls.Add(this.tb_giamuon);
+            this.gr.Controls.Add(this.label4);
             this.gr.Controls.Add(this.cb_matg);
             this.gr.Controls.Add(this.label8);
             this.gr.Controls.Add(this.tb_gia);
@@ -212,10 +216,30 @@
             this.gr.TabStop = false;
             this.gr.Text = "Thông tin chi tiết độc giả";
             // 
+            // cb_matg
+            // 
+            this.cb_matg.FormattingEnabled = true;
+            this.cb_matg.Location = new System.Drawing.Point(140, 166);
+            this.cb_matg.Name = "cb_matg";
+            this.cb_matg.Size = new System.Drawing.Size(298, 30);
+            this.cb_matg.TabIndex = 21;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label8.Location = new System.Drawing.Point(29, 174);
+            this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(93, 22);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Mã tác giả";
+            // 
             // tb_gia
             // 
             this.tb_gia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_gia.Location = new System.Drawing.Point(499, 290);
+            this.tb_gia.Location = new System.Drawing.Point(140, 290);
             this.tb_gia.Margin = new System.Windows.Forms.Padding(6);
             this.tb_gia.Name = "tb_gia";
             this.tb_gia.Size = new System.Drawing.Size(298, 30);
@@ -226,7 +250,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label11.Location = new System.Drawing.Point(328, 298);
+            this.label11.Location = new System.Drawing.Point(29, 298);
             this.label11.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(73, 22);
@@ -247,7 +271,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label10.Location = new System.Drawing.Point(33, 235);
+            this.label10.Location = new System.Drawing.Point(29, 235);
             this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(76, 22);
@@ -346,25 +370,26 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "QUẢN LÝ SÁCH";
             // 
-            // cb_matg
+            // tb_giamuon
             // 
-            this.cb_matg.FormattingEnabled = true;
-            this.cb_matg.Location = new System.Drawing.Point(140, 166);
-            this.cb_matg.Name = "cb_matg";
-            this.cb_matg.Size = new System.Drawing.Size(298, 30);
-            this.cb_matg.TabIndex = 21;
+            this.tb_giamuon.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_giamuon.Location = new System.Drawing.Point(791, 290);
+            this.tb_giamuon.Margin = new System.Windows.Forms.Padding(6);
+            this.tb_giamuon.Name = "tb_giamuon";
+            this.tb_giamuon.Size = new System.Drawing.Size(298, 30);
+            this.tb_giamuon.TabIndex = 23;
             // 
-            // label8
+            // label4
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label8.Location = new System.Drawing.Point(29, 174);
-            this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(93, 22);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "Mã tác giả";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label4.Location = new System.Drawing.Point(614, 298);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(92, 22);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "Giá Mượn";
             // 
             // FormQLSach
             // 
@@ -420,5 +445,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cb_matg;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox tb_giamuon;
+        private System.Windows.Forms.Label label4;
     }
 }
